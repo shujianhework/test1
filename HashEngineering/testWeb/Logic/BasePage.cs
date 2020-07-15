@@ -12,6 +12,7 @@ namespace testWeb.Logic
             String Keys = page.Request["Keys"];
             String Cmd = page.Request["Cmd"];
             String Help = page.Request["Help"];
+            
             bool help = false;
             if ((Cmd == null || Keys == null) && Help == null)
             {

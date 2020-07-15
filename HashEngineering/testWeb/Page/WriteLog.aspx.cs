@@ -20,6 +20,10 @@ namespace testWeb.Page
                     Tools.Log.write("head:" + Head + "\ndata:" + data);
                     Response.Write("ok");
                 }
+                else
+                {
+                    Response.Write("ffffffffffffffff");
+                }
             }
             catch (Exception ex)
             {

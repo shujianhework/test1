@@ -11,7 +11,7 @@ namespace Tools
         static private string strDefaultConnection;
         static DB()
         {
-            strDefaultConnection = "";// WebApplication1.Logic.L_UpLoad.sqlDBconnect;
+            strDefaultConnection = "";// WebApplication1.Logic.L_UpLoad.sqlDBconnect;            
         }
         static private bool insert(string strconnect, string strcmd)
         {

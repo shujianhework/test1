@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.IO;
+using System.Web;
 namespace Tools
 {
     class PIL<T>{
@@ -275,6 +276,23 @@ namespace Tools
             }
             return ret;
         }
-        //public static bool 
+        public static string GetIp(HttpRequest Request)
+        {
+            string userIP = "";
+            try
+            {
+                userIP = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+                if (userIP == null || userIP == "")
+                {
+                    userIP = Request.ServerVariables["REMOTE_ADDR"];
+                }
+            }
+            catch (Exception ex)
+            {
+                userIP = "error";
+                return userIP;
+            }
+            return userIP;
+        } 
     }
 }
