@@ -2,8 +2,15 @@
 //
 
 #include "stdafx.h"
+#pragma warning(disable:4305 4309)
+#pragma comment(lib,"ole32")
+#pragma comment(lib,"comsupp")
+#include <objbase.h>
+#include <comip.h>
+#include <mlang.h>
 #include "HashEngineering.h"
 
+typedef _com_ptr_t<_com_IIID<IMultiLanguage3, &IID_IMultiLanguage3> > IMultiLanguage3Ptr;
 #define MAX_LOADSTRING 100
 
 // 全局变量: 
@@ -16,7 +23,23 @@ ATOM				MyRegisterClass(HINSTANCE hInstance);
 BOOL				InitInstance(HINSTANCE, int);
 LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK	About(HWND, UINT, WPARAM, LPARAM);
-
+#ifndef Win32
+#include <sstream>
+void print(WCHAR *p1){
+	static HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
+	WriteConsole(out, p1, wcslen(p1), NULL, NULL);
+}
+template<typename T>
+void printf(T t){
+	std::wstringstream wss;
+	wss << t;
+	std::wstring ws;
+	wss >> ws;
+	ws = ws + L"\n";
+	print((WCHAR*)ws.c_str());
+}
+#else
+#endif
 int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPTSTR    lpCmdLine,
@@ -24,7 +47,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 {
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
-
+	AllocConsole();
  	// TODO:  在此放置代码。
 	MSG msg;
 	HACCEL hAccelTable;
@@ -39,7 +62,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	{
 		return FALSE;
 	}
-
+	printf<wchar_t*>(L"xcvxcvxc");
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_HASHENGINEERING));
 
 	// 主消息循环: 
@@ -51,7 +74,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 			DispatchMessage(&msg);
 		}
 	}
-
+	FreeConsole();
 	return (int) msg.wParam;
 }
 
@@ -93,6 +116,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 //        在此函数中，我们在全局变量中保存实例句柄并
 //        创建和显示主程序窗口。
 //
+
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    HWND hWnd;
@@ -101,18 +125,48 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    hWnd = CreateWindow(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, NULL, NULL, hInstance, NULL);
-
    if (!hWnd)
    {
       return FALSE;
    }
 
+   CreateWindow(L"Edit", L"sdfsdfsd", WS_CHILD | ES_MULTILINE | WS_VISIBLE | ES_LEFT, 80, 80, 500, 150, hWnd, (HMENU)6521, hInst, NULL);
+   CreateWindow(L"Edit", L"", WS_CHILD | ES_MULTILINE | WS_VISIBLE | ES_LEFT, 80, 240, 500, 150, hWnd, (HMENU)6012, hInst, NULL);
+   CreateWindow(L"Button", L"查看", WS_CHILD | BS_TEXT | WS_VISIBLE , 550, 80, 200, 80, hWnd, (HMENU)3721, hInst, NULL);
+   DWORD dw = GetLastError();
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 
    return TRUE;
 }
 
+void sdfsdf(wchar_t *lp){
+	CoInitialize(NULL);
+	{
+		IMultiLanguage3Ptr pML(CLSID_CMultiLanguage, NULL, CLSCTX_INPROC);
+		char *data = (char *)lp;//{ 0xD6, 0xD0, 0xCE, 0xC4, 0xB1, 0xE0, 0xC2, 0xEB };
+		int isize = sizeof(data);
+		DetectEncodingInfo result[32];
+		int result_count = sizeof(result) / sizeof(result[0]);
+		HRESULT hr = pML->DetectInputCodepage(MLDETECTCP_NONE, 0, data, &isize, result, &result_count);
+		if (!SUCCEEDED(hr))
+		{
+			fprintf(stderr, "Failed with 0x%x\n", hr);
+			CoUninitialize();
+			return ;
+		}
+		WCHAR p[9068] = L"";
+		for (int i = 0; i < result_count; i++)
+		{
+			WCHAR desc[100] = { 0 };
+			pML->GetCodePageDescription(result[i].nCodePage, result[i].nLangID, desc, 100);
+			//printf("CP:%d (%S)\n", result[i].nCodePage, desc);
+			wsprintf(p, L"%S CP:%d (%S)\n",p, result[i].nCodePage, desc);
+		}
+		print(p);
+	}
+	CoUninitialize();
+}
 //
 //  函数:  WndProc(HWND, UINT, WPARAM, LPARAM)
 //
@@ -128,7 +182,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	int wmId, wmEvent;
 	PAINTSTRUCT ps;
 	HDC hdc;
-
 	switch (message)
 	{
 	case WM_COMMAND:
@@ -143,6 +196,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		case IDM_EXIT:
 			DestroyWindow(hWnd);
 			break;
+		case 3721:{
+					  int len = ::SendMessage(GetDlgItem(hWnd, 6521), WM_GETTEXTLENGTH, 0, 0);
+					  wchar_t* buffer = new wchar_t[len + 1];
+					  int n = ::SendMessage(GetDlgItem(hWnd, 6521), WM_GETTEXT, len + 1, (LPARAM)buffer);
+					  //::PostMessage(GetDlgItem(hWnd, 6012), WM_SETTEXT, (WPARAM)buffer, (LPARAM)n);
+					  printf(buffer);
+					  sdfsdf(buffer);
+					  delete buffer;
+					  buffer = NULL;
+		}break;
 		default:
 			return DefWindowProc(hWnd, message, wParam, lParam);
 		}

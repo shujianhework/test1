@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace testWeb.Page
 {
+    //崩溃日志 形成多个文件多参数提交 。部分使用
     public partial class UpdateFile : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)

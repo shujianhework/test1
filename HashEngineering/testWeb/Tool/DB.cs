@@ -11,7 +11,8 @@ namespace Tools
         static private string strDefaultConnection;
         static DB()
         {
-            strDefaultConnection = "";// WebApplication1.Logic.L_UpLoad.sqlDBconnect;            
+            strDefaultConnection = "Data Source=47.75.78.46; initial catalog=testdb;user id=sa;password=SQL@sa46;Connect Timeout=30";
+            // WebApplication1.Logic.L_UpLoad.sqlDBconnect;            
         }
         static private bool insert(string strconnect, string strcmd)
         {

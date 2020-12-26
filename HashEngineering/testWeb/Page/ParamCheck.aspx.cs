@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace testWeb.Page
 {
+    //参数检查体系，因其他原因搁置
     public partial class ParamCheck : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)

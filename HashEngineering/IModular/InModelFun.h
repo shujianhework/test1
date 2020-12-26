@@ -15,5 +15,5 @@ typedef int(__stdcall *NPROC)();
 #define ERROROUT(str) std::exception(str)
 #define LOCALFUN(str,model,...) CASE("v,"str) decltype(model)* p = (decltype(model)*)proc;p(##__VA_ARGS__);RETURN;}
 #define MAKEFUN(Name,...) void __stdcall automake##Name(##__VA_ARGS__){}
-bool ParamProcHandler__RunLibSysFun(std::string str, std::string autograph, NPROC  proc);
+//bool ParamProcHandler__RunLibSysFun(std::string str, std::string autograph, NPROC  proc);
 #endif

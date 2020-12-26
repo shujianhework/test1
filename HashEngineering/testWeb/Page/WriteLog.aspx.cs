@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace testWeb.Page
 {
+    //最初版本的写日志提页面。已经停用
     public partial class WriteLog : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)

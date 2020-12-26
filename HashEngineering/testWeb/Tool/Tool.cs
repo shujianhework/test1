@@ -157,15 +157,41 @@ namespace Tools
             {
                 object obj = Json2Object(s);
                 object[] objs = obj as object[];
-                if (objs == null)
-                    return false;
-                for (int i = 0; i < objs.Length; i++)
+                if (objs != null)
                 {
-                    T item = (T)objs[i];
-                    if (item == null)
-                        return false;
-                    if (func(item, i) == false)
-                        return false;
+                    for (int i = 0; i < objs.Length; i++)
+                    {
+                        T item = (T)objs[i];
+                        if (item == null)
+                            return false;
+                        if (func(item, i) == false)
+                            return false;
+                    }
+                }
+                ret = true;
+            }
+            catch (Exception ex)
+            {
+                ret = false;
+            }
+            return ret;
+        }
+        static public bool Json2Objects<T>(string s, Func<T, string, bool> func)
+        {
+            bool ret = false;
+            try
+            {
+                object obj = Json2Object(s);
+                Dictionary<String, object> objs = obj as Dictionary<String, object>;
+                if (objs != null)
+                {
+                    foreach (var item in objs)
+                    {
+                        object o = item.Value;
+                        T t = (T)o;
+                        if (func(t,item.Key) == false)
+                            return false;
+                    }
                 }
                 ret = true;
             }

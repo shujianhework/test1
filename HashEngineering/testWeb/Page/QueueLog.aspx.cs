@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace testWeb.Page
 {
+    //队列日志记录 部分使用
     public partial class QueueLog : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)

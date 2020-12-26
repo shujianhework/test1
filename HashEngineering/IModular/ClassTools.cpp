@@ -3,6 +3,7 @@
 #include <iostream>
 #include <algorithm>
 #include <Windows.h>
+
 std::map<std::string, std::string> ClassTools::HeadTrance(int argc, char*argv[]) throw(std::exception){
 	std::map<std::string, std::string> ret = {};
 	std::string key = "";
@@ -34,7 +35,7 @@ void ClassTools::TranceString(std::string &str, bool Big2Small){
 		transform(str.begin(), str.end(), str.begin(), ::toupper);
 }
 std::string ClassTools::GetModuleName(){
-	char szFileFullPath[MAX_PATH];// , szProcessName[MAX_PATH];
+	char szFileFullPath[MAX_PATH];
 	::GetModuleFileNameA(NULL, szFileFullPath, MAX_PATH);
 	std::string FileFullPath = szFileFullPath;
 	return FileFullPath;

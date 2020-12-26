@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using testWeb.Message;
 using System.Web.Script.Serialization;
 using testWeb.Logic;
+//Linux 系统命令 暂时已废除
 namespace testWeb.Page
 {
     public partial class LinuxCmd : System.Web.UI.Page

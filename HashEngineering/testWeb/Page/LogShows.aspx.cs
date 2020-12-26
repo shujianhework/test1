@@ -5,9 +5,15 @@ using System.IO;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Drawing;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
 namespace testWeb.Page
 {
+    //专门处理日志显示的页面。因技术问题搁置
     public partial class LogShows : System.Web.UI.Page
     {
         List<String> alldirsbuff;
@@ -16,15 +22,9 @@ namespace testWeb.Page
         {
             alldirsbuff = new List<string>();
             templistbuff = new List<string>();
-            ListViewItem lvi = new ListViewItem(0);
-            lvi.DataItem = "sdfsd";
-            ListViewDataItem lvdi = new ListViewDataItem(0, 0);
-            for (int i = 0; i < 10; i++)
-            {
-                ListView1.Items.Add("");
-
-            }
-            //ListView1.Row
+            this.ListView1.Items.Clear();
+            //ListViewItem item = new ListViewItem();
+            //item.Text = "";
         }
 
         protected void Button1_Click(object sender, EventArgs e)

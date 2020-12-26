@@ -17,7 +17,10 @@ class ParamProcHandler
 public:
 	static bool RunLibSysFun(std::map<std::string, std::string> param);
 	static bool Sleep(std::map<std::string, std::string> param);
+	static bool CocosResCompile(std::map<std::string, std::string> param);
+	static bool CheckLangaugeCode(std::map<std::string, std::string> param);
 	static bool Mp3(std::map<std::string, std::string> param);
+	static bool binExportFuns(std::map<std::string, std::string> param);
 	static void push(std::string key, std::string helpinfo, ParamProcFunc func);
 	static void Run(std::map<std::string, std::string>& param);	
 	static void Md5(std::map<std::string, std::string> &param);

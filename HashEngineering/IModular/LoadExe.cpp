@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include <ImageHlp.h>
 #include <winnt.h>
+#pragma comment(lib, "Dbghelp.lib")
 LoadExe::LoadExe(std::string path):file(path), filedata(NULL)
 {
 }
@@ -171,7 +172,7 @@ void LoadExe::OPTIONALHandle(IMAGE_OPTIONAL_HEADER *opt) {
 //}
 static char *getdata(std::string path) {
 	char *p = NULL;
-#ifndef UserWin32 
+#ifdef UserWin32 
 	HANDLE f = CreateFile(path.c_str(),
 		GENERIC_READ,
 		0,
