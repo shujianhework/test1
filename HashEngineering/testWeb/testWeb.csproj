@@ -74,6 +74,7 @@
     <Content Include="Page\LogShows.aspx" />
     <Content Include="Page\ParamCheck.aspx" />
     <Content Include="Page\QueueLog.aspx" />
+    <Content Include="Page\TaskHandles.aspx" />
     <Content Include="Page\Temp.aspx" />
     <Content Include="Page\UpdateFile.aspx" />
     <Content Include="Page\WriteLog.aspx" />
@@ -83,6 +84,7 @@
     <Compile Include="Logic\BaseHandle.cs" />
     <Compile Include="Logic\BasePage.cs" />
     <Compile Include="Logic\CmdHandle.cs" />
+    <Compile Include="Logic\TaskPool.cs" />
     <Compile Include="Message\MesCenter.cs" />
     <Compile Include="Page\BaseFrame.aspx.cs">
       <DependentUpon>BaseFrame.aspx</DependentUpon>
@@ -147,6 +149,13 @@
     <Compile Include="Page\QueueLog.aspx.designer.cs">
       <DependentUpon>QueueLog.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Page\TaskHandles.aspx.cs">
+      <DependentUpon>TaskHandles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\TaskHandles.aspx.designer.cs">
+      <DependentUpon>TaskHandles.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Page\Temp.aspx.cs">
       <DependentUpon>Temp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -202,7 +211,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53005</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53005/</IISUrl>
+          <IISUrl>http://192.168.2.98:53005/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

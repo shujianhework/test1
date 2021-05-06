@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XmlLua", "XmlLua\XmlLua.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestLua2", "TestLua2\TestLua2.vcxproj", "{CFB599F7-21FD-4DF3-87D6-E597578ED4D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskMessage", "TaskMessage\TaskMessage.csproj", "{EA3FFBD6-5D72-4ED0-826C-F70E5834EB0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,16 @@ Global
 		{CFB599F7-21FD-4DF3-87D6-E597578ED4D6}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{CFB599F7-21FD-4DF3-87D6-E597578ED4D6}.Release|Win32.ActiveCfg = Release|Win32
 		{CFB599F7-21FD-4DF3-87D6-E597578ED4D6}.Release|Win32.Build.0 = Release|Win32
+		{EA3FFBD6-5D72-4ED0-826C-F70E5834EB0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA3FFBD6-5D72-4ED0-826C-F70E5834EB0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA3FFBD6-5D72-4ED0-826C-F70E5834EB0F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{EA3FFBD6-5D72-4ED0-826C-F70E5834EB0F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{EA3FFBD6-5D72-4ED0-826C-F70E5834EB0F}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{EA3FFBD6-5D72-4ED0-826C-F70E5834EB0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA3FFBD6-5D72-4ED0-826C-F70E5834EB0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA3FFBD6-5D72-4ED0-826C-F70E5834EB0F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{EA3FFBD6-5D72-4ED0-826C-F70E5834EB0F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{EA3FFBD6-5D72-4ED0-826C-F70E5834EB0F}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

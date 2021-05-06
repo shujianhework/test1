@@ -50,11 +50,6 @@ namespace Tools
             prveDateTime = DateTime.Now;
             RootPath = WebRootPhysicsPath.ToString();
             PrveDate = prveDateTime;
-            Thread th = new Thread(new ParameterizedThreadStart(t =>
-            {
-                loop();
-            }));
-            th.Start();
             
         }
         static private void loop()
